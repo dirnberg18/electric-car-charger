@@ -7,14 +7,10 @@ const Header = () => {
     return (
         <nav>
             <div classname='header-nav'>
-                <div classname='div-svg'>
-                    <Logo />
-                </div>
-                <div style={{display:'flex', flexDirection:'row', 'alignItems':'center'}}>
-                    <NavLink to='/'>Home</NavLink>
-                    <NavLink to='/map'>Map</NavLink>
-                    <button classname='loggin-button'>Login</button>
-                </div>
+                <Logo />
+                <NavLink to='/'>Home</NavLink>
+                <NavLink to='/VisitorView'>Map</NavLink>
+                <button classname='loggin-button'>Login</button>
             </div>
         </nav>
     )

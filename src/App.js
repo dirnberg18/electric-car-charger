@@ -32,7 +32,7 @@ import {
 } from "react-router-dom";
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
-import Map from './Components/VisitorView';
+import VisitorView from './Components/VisitorView';
 import Login from './Components/Login';
 
 export default class App extends React.Component  {
@@ -40,22 +40,12 @@ export default class App extends React.Component  {
   {
     return (
       <Router>
-        
-          <Route>
-          <ul>
-          <li>
-            <Link to="/visitorview">Map</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
-              <Route path="/visitorview">
-                <Map />
-              </Route>
-              <Route path="/login">
-                <Login />
-              </Route>
+        <Header/>
+          <Route path="/visitorview">
+            <VisitorView />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
         <Footer/> 
       </Router> 
