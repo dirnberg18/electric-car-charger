@@ -1,5 +1,5 @@
 import React from 'react'
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import json from './data/charging-locations.json';
  
 const containerStyle = {
@@ -25,6 +25,8 @@ function VisitorView() {
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null)
   }, [])
+
+  const [SelectedCenter, setSelectedCenter] = React.useState(null)
  
   return (
     <div>
@@ -43,10 +45,30 @@ function VisitorView() {
                     lat: location.geometry.coordinates[1],
                     lng: location.geometry.coordinates[0]
                 }}
-            />
-        ))}
-        { /* Child components, such as markers, info windows, etc. */ }
-        <></>
+
+                onClick={() => {
+                    setSelectedCenter(location);
+                }}
+                /> 
+                ))}
+<></>
+                {SelectedCenter && (
+                    <InfoWindow
+                        onCloseClick={() => {
+                            setSelectedCenter(null);
+                        }}
+                        position={{
+                            lat: SelectedCenter.geometry.coordinates[1],
+                            lng: SelectedCenter.geometry.coordinates[0]
+                        }}
+                    >
+                        <div>
+                            <h2>{SelectedCenter.properties.NAME}</h2>
+                            <p>{SelectedCenter.properties.ADDRESS}</p>
+                            <p>{SelectedCenter.properties.DESCRIPTIO}</p>
+                        </div>
+                    </InfoWindow>
+                     )}
       </GoogleMap>
     </LoadScript>
     </div>
