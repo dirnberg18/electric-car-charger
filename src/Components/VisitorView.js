@@ -65,7 +65,7 @@ function VisitorView() {
                         <div>
                             <h2>{SelectedCenter.properties.NAME}</h2>
                             <p>{SelectedCenter.properties.ADDRESS}</p>
-                            <p>{SelectedCenter.properties.CREATED_DA}</p>
+                            <p>{SelectedCenter.properties.DESCRIPTIO}</p>
                         </div>
                     </InfoWindow>
                      )}
